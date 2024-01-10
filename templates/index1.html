@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Information Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ffffff, #333);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            max-height: 600px;
+            overflow-y: auto;
+            border-radius: 0.5rem;
+            box-shadow: 5px 5px 15px #626161;
+            background-color: #fff;
+            width: 400px;
+        }
+        h1, h3 {
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select {
+            vertical-align: top;
+            margin-left: 1.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+        }
+        @media only screen and (max-width: 420px) {
+            .form-container {
+                width: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Loan Information Form</h1>
+    <div class="form-container">
+        <form action="/predict" method="POST" enctype=multipart/form-data>
+
+            <label for="CreditGrade">CreditGrade:</label>
+            <input type="number" step="any" placeholder="Pleae Input the value between 0 to 7" name="CreditGrade"
+                id="CreditGrade" required>
+
+            <label for="BorrowerAPR">Borrower APR:</label>
+            <input type="number" step="any" placeholder="The borrower's annual percentage rate for the loan"
+                name="BorrowerAPR" id="BorrowerAPR" required>
+
+            <label for="BorrowerRate">Borrower Rate:</label>
+            <input type="number" step="any" placeholder="The Borrower's interst rate for this loan" name="BorrowerRate"
+                id="BorrowerRate" required>
+
+            <label for="LenderYield">Lender Yield:</label>
+            <input type="number" step="any" placeholder="The lender yield on the loan" name="LenderYield"
+                id="LenderYield" required>
+
+            <label for="ProsperScore">ProsperScore:</label>
+            <input type="number" step="any" placeholder="Pleae Input the value between 1 to 11" name="ProsperScore"
+                id="ProsperScore" required>
+
+            <label for="CreditScore">CreditScore:</label>
+            <input type="number" step="any"
+                placeholder="The borrower's credit score as provided by a consumer credit rating agency."
+                name="CreditScore" id="CreditScore" required>
+
+            <label for="MonthlyLoanPayment">MonthlyLoanPayment:</label>
+            <input type="number" step="any" placeholder="The scheduled Monthly loan payment" name="MonthlyLoanPayment"
+                id="MonthlyLoanPayment" required>
+
+            <label for="LP_CustomerPayments">LP_CustomerPayments:</label>
+            <input type="number" step="any" placeholder="Pre charge-off cumulative gross payments "
+                name="LP_CustomerPayments" id="LP_CustomerPayments" required>
+
+            <label for="LP_InterestandFees">LP_InterestandFees:</label>
+            <input type="number" step="any" placeholder="Pre charge-off cumulative interest and fees paid "
+                name="LP_InterestandFees" id="LP_InterestandFees" required>
+
+            <label for="LP_ServiceFees">LP_ServiceFees:</label>
+            <input type="number" step="any" min="-999.99" placeholder="Cumulative service fees paid by the investors."
+                name='LP_ServiceFees' id='LP_ServiceFees' required>
+
+            <label for="LP_CustomerPrincipalPayments">LP_CustomerPrincipalPayments:</label>
+            <input type="number" step="any" placeholder="Pre charge-off cumulative principal payments."
+                name="LP_CustomerPrincipalPayments" id="LP_CustomerPrincipalPayments" required>
+
+            <label for="LP_CollectionFees">LP_CollectionFees:</label>
+            <input type="number" step="any" placeholder="Cumulative collection fees paid by the investors. "
+                name="LP_CollectionFees" id="LP_CollectionFees" required>
+
+            <label for="LP_GrossPrincipalLoss">LP_GrossPrincipalLoss:</label>
+            <input type="number" step="any" placeholder="The gross charged off amount of the loan"
+                name="LP_GrossPrincipalLoss" id="LP_GrossPrincipalLoss" required>
+
+            <label for="LoanOriginalAmount">LoanOriginalAmount:</label>
+            <input type="number" step="any" placeholder="Origination amount of the loan" name="LoanOriginalAmount"
+                id="LoanOriginalAmount" required>
+
+            <label for="StatedMonthlyIncome">StatedMonthlyIncome:</label>
+            <input type="number" step="any" placeholder="The monthly income stated by borrower"
+                name="StatedMonthlyIncome" id="StatedMonthlyIncome" required>
+
+            <div class="btn">
+                <button type="submit">Predict</button>
+            </div>
+        </form>
+        
+    </div>
+    <h3>{{ result }}</h3>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+Numpy 
+pandas 
+scikit-learn 
+joblib
+pickle-mixin
+StandardScaler 
+flask 
